@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
-import { DailyCycleBar } from "@/components/layout/DailyCycleBar";
 import { dashboardData } from "@/data/basketball";
 
 export default function DashboardPage() {
@@ -10,8 +9,6 @@ export default function DashboardPage() {
         <h1 className="text-3xl font-bold">Dashboard</h1>
         <p className="mt-1 text-slate-400">Your daily operating center for decisions, recovery, and basketball IQ growth.</p>
       </div>
-
-      <DailyCycleBar current="dashboard" />
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Card title="Today's Focus"><p className="text-slate-200">{dashboardData.focus}</p></Card>
@@ -45,14 +42,6 @@ export default function DashboardPage() {
           </div>
         </Card>
       </div>
-
-      <Card title="Practice Support Cycle" subtitle="Built for players without constant access.">
-        <div className="grid gap-3 md:grid-cols-3 text-sm text-slate-300">
-          <p><span className="font-semibold text-white">Before:</span> pick one concept and role job.</p>
-          <p><span className="font-semibold text-white">During:</span> log confusion point and defensive coverage.</p>
-          <p><span className="font-semibold text-white">After:</span> review film assignment and next adjustment.</p>
-        </div>
-      </Card>
     </div>
   );
 }

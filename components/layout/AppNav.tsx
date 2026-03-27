@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 const links = [
   ["/dashboard", "Dashboard"],
   ["/profile", "Profile"],
-  ["/knowledge", "Knowledge Engine"],
   ["/coach", "AI Coach"],
   ["/practice-breakdown", "Practice Breakdown"],
   ["/play-encyclopedia", "Play Encyclopedia"],
@@ -16,14 +15,14 @@ const links = [
   ["/film-study", "Film Study"],
   ["/quiz", "IQ Quiz"],
   ["/planner", "Practice Planner"],
+  ["/admin", "Admin"],
 ] as const;
 
 export function AppNav() {
   const pathname = usePathname();
   const inApp = pathname !== "/";
-  const isAdminRoute = pathname.startsWith("/admin");
 
-  if (!inApp || isAdminRoute) return null;
+  if (!inApp) return null;
 
   return (
     <aside className="sticky top-0 h-screen w-72 border-r border-court-line bg-court-panel/70 p-4 backdrop-blur">

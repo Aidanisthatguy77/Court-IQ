@@ -27,7 +27,7 @@ export default function RecoveryPage() {
         <h1 className="text-3xl font-bold">Recovery + Injury Intelligence Mode</h1>
         <p className="mt-2 max-w-4xl text-sm text-slate-300">
           Education and decision-support only. Court IQ does not diagnose injuries and is not a substitute for licensed medical professionals.
-          Use this system to track symptoms, understand return-to-play principles, and prepare better clinical conversations with calm, clear language.
+          Use this system to track symptoms, understand return-to-play principles, and prepare better clinical conversations.
         </p>
       </div>
 
@@ -44,7 +44,7 @@ export default function RecoveryPage() {
           </div>
         </Card>
 
-        <Card title="2) Symptom / Recovery Log" subtitle="Track trends without diagnosis. Uncertainty is normal during recovery; this log helps you make safer decisions.">
+        <Card title="2) Symptom / Recovery Log" subtitle="Track response trends without making diagnostic claims.">
           <div className="grid gap-2">
             {sliderFields.map((field) => (
               <label key={field} className="text-sm capitalize">{field}: {metrics[field]}/10
@@ -57,7 +57,7 @@ export default function RecoveryPage() {
         </Card>
       </div>
 
-      <Card title="3) Live Expertise Panel" subtitle="Medical research and education (not diagnosis). Built to inform, not alarm.">
+      <Card title="3) Live Expertise Panel" subtitle="Medical research and education (not diagnosis).">
         <p className="text-sm text-slate-300">Summary of current guidance: {liveResearchMock.summary}</p>
         <div className="mt-3 grid gap-4 md:grid-cols-2">
           <div>

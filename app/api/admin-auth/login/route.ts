@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import { ADMIN_COOKIE, LOCKOUT_SECONDS, processLoginAttempt, getClientKeyFromIp } from "@/lib/adminAuth";
+import { NextResponse } from "next/server";
+import { ADMIN_COOKIE, LOCKOUT_MS, processLoginAttempt, getClientKey } from "@/lib/adminAuth";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
   const password = typeof body.password === "string" ? body.password : "";
-  const clientKey = getClientKeyFromIp(req.ip);
+  const clientKey = getClientKey(req.headers);
   const result = processLoginAttempt(clientKey, password);
 
   if (!result.configured) {
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
-    maxAge: LOCKOUT_SECONDS,
+    maxAge: LOCKOUT_MS,
     path: "/"
   });
 

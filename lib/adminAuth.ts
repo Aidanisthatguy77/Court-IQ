@@ -4,7 +4,6 @@ import { dirname, join } from "path";
 
 export const MAX_ATTEMPTS = 7;
 export const LOCKOUT_MS = 60 * 60 * 1000;
-export const LOCKOUT_SECONDS = 60 * 60;
 export const ADMIN_COOKIE = "court_iq_admin_session";
 
 interface AttemptRecord {
@@ -57,8 +56,10 @@ function sign(input: string): string | null {
   return createHmac("sha256", secret).update(input).digest("base64url");
 }
 
-export function getClientKeyFromIp(ip: string | undefined): string {
-  return ip ?? "unknown-ip";
+export function getClientKey(headers: Headers): string {
+  const forwardedFor = headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown-ip";
+  const userAgent = headers.get("user-agent") ?? "unknown-agent";
+  return `${forwardedFor}:${userAgent}`;
 }
 
 export function getAttemptRecord(clientKey: string): AttemptRecord {
