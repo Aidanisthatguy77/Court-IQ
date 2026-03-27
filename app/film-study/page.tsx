@@ -12,7 +12,6 @@ export default function FilmStudyPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Film Study Guide</h1>
-      <p className="text-sm text-slate-400">If film has felt confusing, start here. We break down what to look for in plain language and then in advanced reads.</p>
       <div className="grid gap-4 lg:grid-cols-2">
         {sections.map(([title, bullets]) => (
           <Card key={title} title={title as string}>

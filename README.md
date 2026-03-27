@@ -28,7 +28,6 @@ npm run dev
 - `/quiz`
 - `/planner`
 - `/admin`
-- `/knowledge`
 
 ## App Architecture
 - `app/*`: route pages and layout
